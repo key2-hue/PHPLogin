@@ -1,0 +1,40 @@
+body {
+  text-align: center;
+  font-family: Verdana, sans-serif;
+}
+
+#container {
+  width: 500px;
+  margin: 40px auto;
+}
+
+input[type="text"], input[type="password"] {
+  height: 20px;
+  display: inline-block;
+}
+
+.btn {
+  background:skyblue;
+  height: 30px;
+  line-height: 30px;
+  width: 130px;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 4px 0 rgb(78, 201, 250)
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.btn:active {
+  box-shadow: none;
+  position: relative;
+  top: 4px;
+}
+
+.link {
+  font-size: 13px;
+}
