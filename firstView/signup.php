@@ -1,6 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/../setting/setting.php'); 
+require_once(__DIR__ . '/../setting/setting.php');
+
+// require_once(__DIR__ . '/../next/Controller/Signup.php');
 
 $signup = new MyApp\Controller\Signup();
 
@@ -20,9 +22,11 @@ $signup->begin();
       <p>
         <input type="text" name="email" placeholder="メールアドレス">
       </p>
+      <p class="err"><?= h($signup->getErrors('email')); ?></p>
       <p>
         <input type="password" name="password" placeholder="パスワード">
       </p>
+      <p class="err"><?= h($signup->getErrors('password')); ?></p>
       <div class="btn" onclick="document.getElementById('signup').submit();">サインアップ</div>
       <p class="link"><a href="/login.php">サインアップ</a></p>
     </form>

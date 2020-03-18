@@ -15,7 +15,7 @@
           <input type="password" name="password" placeholder="パスワード">
         </p>
         <div class="btn">ログイン</div>
-        <p class="link"><a href="/signup.php">サインアップ</a></p>
+        <p class="link"><a href="/firstView/signup.php">サインアップ</a></p>
       </form>
     </div>
   </body>

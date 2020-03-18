@@ -11,4 +11,4 @@ define('TOP_URL', 'http://' . $_SERVER['HTTP_HOST']);
 session_start();
 
 require_once(__DIR__ . '/../next/functions.php');
-require_once('/autoload.php');
+require_once(__DIR__ . '/autoload.php');

@@ -1,8 +1,13 @@
 <?php
 
+
 namespace MyApp\Controller;
 
-class SignUp extends \MyApp\Controller {
+// require_once('login_git_php/next/Controller.php');
+
+
+class Signup extends \MyApp\Controller {
+
   public function begin() {
     if($this->afterLogin()) {
       header('Location: ' . TOP_URL);
@@ -17,8 +22,14 @@ class SignUp extends \MyApp\Controller {
     try {
       $this->check();
     } catch(\MyApp\Exception\InvalidEmail $e) {
-
+      $this->setErrors('email', $e->getMessage());
     } catch(\MyApp\Exception\InvalidPassword $e) {
+      $this->setErrors('password', $e->getPassword());
+    }
+
+    if($this->hasError()) {
+      return;
+    } else {
 
     }
   }
