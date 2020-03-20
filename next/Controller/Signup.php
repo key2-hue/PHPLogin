@@ -8,6 +8,9 @@ namespace MyApp\Controller;
 
 class Signup extends \MyApp\Controller {
 
+  public $wrongEmail;
+  public $wrongPassword;
+
   public function begin() {
     if($this->afterLogin()) {
       header('Location: ' . TOP_URL);
@@ -24,9 +27,9 @@ class Signup extends \MyApp\Controller {
     try {
       $this->check();
     } catch(\MyApp\Exception\InvalidEmail $e) {
-      $this->setMistakes('email', $e->getMessage());
+      $this->wrongEmail = "無効なメールアドレスです";
     } catch(\MyApp\Exception\InvalidPassword $e) {
-      $this->setMistakes('password', $e->getMessage());
+      $this->wrongPassword = "無効なパスワードです";
     }
 
     $this->setNums('email', $_POST['email']);

@@ -23,12 +23,12 @@ $signup->begin();
           <label>メールアドレス
             <input type="text" name="email" value="<?= isset($signup->getNums()->email) ? h($signup->getNums()->email) : ''; ?>">
           </label>
-          <p class="err"><?= h($signup->getMistakes('email')); ?></p>
+          <p class="err"><?= $signup->wrongEmail; ?></p>
           <label>パスワード
             <input type="password" name="password">
           </label>
         </div>
-        <p class="err"><?= h($signup->getMistakes('password')); ?></p>
+        <p class="err"><?= $signup->wrongPassword; ?></p>
         <input type="submit" value="サインアップ" name="signup" class="btn">
       </fieldset>
       <p class="link"><a href="/firstView/login.php">ログイン</a></p>
