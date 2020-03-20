@@ -1,6 +1,8 @@
 body {
   text-align: center;
   font-family: Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 #container {
@@ -37,4 +39,30 @@ input[type="text"], input[type="password"] {
 
 .link {
   font-size: 13px;
+}
+
+.err {
+  color: red;
+  font-size: 13px;
+}
+
+ul {
+  position: relative;
+  right: 40px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+ul > li {
+  list-style: none;
+  text-align: center;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-evenly;
 }

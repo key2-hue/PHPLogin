@@ -22,19 +22,38 @@ class Signup extends \MyApp\Controller {
     try {
       $this->check();
     } catch(\MyApp\Exception\InvalidEmail $e) {
-      $this->setErrors('email', $e->getMessage());
+      $this->setMistakes('email', $e->getMessage());
     } catch(\MyApp\Exception\InvalidPassword $e) {
-      $this->setErrors('password', $e->getPassword());
+      $this->setMistakes('password', $e->getMessage());
     }
+
+    $this->setNums('email', $_POST['email']);
 
     if($this->hasError()) {
       return;
     } else {
-
+      try {
+        $model = new \MyApp\Model\User();
+        $model->create([
+          'email' => $_POST['email'],
+          'password' => $_POST['password']
+        ]);
+      } catch(\MyApp\Exception\DuplicateEmail $e) {
+        $this->setMistakes('email', $e->getMessage());
+        return;
+      }
+      header('Location: ' . TOP_URL . '/firstView/signup.php');
+      exit;
     }
   }
 
   private function check() {
+
+    if(!isset($_POST['security']) || $_POST['security'] !== $_SESSION['security']) {
+      echo "セキュリティーにミスがあります";
+      exit;
+    }
+
     if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
       throw new \MyApp\Exception\InvalidEmail();
     }
