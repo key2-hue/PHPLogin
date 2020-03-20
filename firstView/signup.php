@@ -29,7 +29,7 @@ $signup->begin();
           </label>
         </div>
         <p class="err"><?= h($signup->getMistakes('password')); ?></p>
-        <div class="btn" onclick="document.getElementById('Signup').submit();">サインアップ</div>
+        <input type="submit" value="サインアップ" name="signup" class="btn">
       </fieldset>
       <p class="link"><a href="/firstView/login.php">ログイン</a></p>
       <input type="hidden" name="security" value="<?= h($_SESSION['security']); ?>">

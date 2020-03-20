@@ -14,7 +14,9 @@ class Signup extends \MyApp\Controller {
       exit;
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $this->loginFlow();
+      if(isset($_POST['signup'])) {
+        $this->loginFlow();
+      }
     }
   }
 

@@ -10,7 +10,9 @@ class Login extends \MyApp\Controller {
     }
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $this->loginFlow();
+      if(isset($_POST['login'])) {
+        $this->loginFlow();
+      }
     }
   }
 

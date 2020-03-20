@@ -28,7 +28,7 @@ $login->begin();
             </label>
             </div>
           <p class="err"><?= h($login->getMistakes('login')); ?></p>
-          <div class="btn" onclick="document.getElementById('login').submit();">ログイン</div>
+          <input type="submit" value="ログイン" class="btn" name="login">
           </fieldset>
           <p class="link"><a href="/firstView/signup.php">サインアップ</a></p>
           <input type="hidden" name="security" value="<?= h($_SESSION['security']); ?>">
