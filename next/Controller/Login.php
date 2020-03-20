@@ -4,16 +4,17 @@ namespace MyApp\Controller;
 
 class Login extends \MyApp\Controller {
   public function begin() {
-    if($this->afterLogin()) {
-      header('Location: ' . TOP_URL . '/firstView/index.php');
-      exit;
-    }
-
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
       if(isset($_POST['login'])) {
         $this->loginFlow();
       }
     }
+    
+    if($this->afterLogin()) {
+      header('Location: ' . TOP_URL . '/firstView/index.php');
+      exit;
+    }
+
   }
 
   protected function loginFlow() {
@@ -57,7 +58,7 @@ class Login extends \MyApp\Controller {
       exit;
     }
 
-    if($_POST['email'] === '' || $_POST['password'] === '') {
+    if(empty($_POST['email']) || empty($_POST['password'])) {
       throw new \MyApp\Exception\NotLogin();
     }
   }

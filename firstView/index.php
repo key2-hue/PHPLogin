@@ -24,7 +24,7 @@ $index->begin();
       <?= h($index->myMail()->email); ?><input type="submit" value="ログアウト">
       <input type="hidden" name="security" value="<?= h($_SESSION['security']); ?>">
     </form>
-    <a href="/firstView/delete.php">ログアウト画面に進む</a>
+    <a href="/firstView/delete.php">アカウント削除画面に進む</a>
     <h1>ユーザー一覧<span class="user">(<?= count($index->getNums()->user); ?>)</span></h1>
     <ul>
       <?php foreach($index->getNums()->user as $email): ?>
