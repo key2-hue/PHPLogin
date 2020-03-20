@@ -49,4 +49,11 @@ class Controller {
     $allUser = $users->fetchAll();
     return $allUser;
   }
+
+  public function deleteUser($deleteUser) {
+    $sql = "delete from loginUsers where email = :email";
+    $stmt = $this->database->prepare($sql);
+    $stmt->bindParam(':email',$deleteUser);
+    $stmt->execute();
+  }
 }

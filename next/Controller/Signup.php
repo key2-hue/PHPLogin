@@ -13,7 +13,7 @@ class Signup extends \MyApp\Controller {
 
   public function begin() {
     if($this->afterLogin()) {
-      header('Location: ' . TOP_URL);
+      header('Location: ' . TOP_URL . '/firstView/index.php');
       exit;
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -5,7 +5,7 @@ namespace MyApp\Controller;
 class Login extends \MyApp\Controller {
   public function begin() {
     if($this->afterLogin()) {
-      header('Location: ' . SITE_URL);
+      header('Location: ' . TOP_URL . '/firstView/index.php');
       exit;
     }
 
