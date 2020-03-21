@@ -15,20 +15,22 @@ class User extends \MyApp\Model {
     }
   }
 
-  public function login($num) {
+  public function login($info) {
     $stmt = $this->database->prepare("select * from loginUsers where email = :email");
     $stmt->execute([
-      ':email' => $num['email']
+      ':email' => $info['email']
     ]);
-    $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
-    $loginUser = $stmt->fetch();
+    
+    $loginUser = $stmt->fetch(\PDO::FETCH_ASSOC);
 
+
+    // var_dump($loginUser);
 
     if(empty($loginUser)) {
       throw new \MyApp\Exception\WrongLogin();
     }
 
-    if(!password_verify($num['password'], $loginUser->password)) {
+    if(!password_verify($info['password'], $loginUser['password'])) {
       throw new \MyApp\Exception\WrongLogin();
     }
 

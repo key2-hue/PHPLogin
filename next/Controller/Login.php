@@ -41,6 +41,8 @@ class Login extends \MyApp\Controller {
 
       session_regenerate_id(true);
       $_SESSION['currentUser'] = $login;
+      $_SESSION['id'] = $login['id'];
+
 
       header('Location: ' . TOP_URL . '/firstView/index.php');
       exit;
@@ -53,13 +55,14 @@ class Login extends \MyApp\Controller {
       exit;
     }
 
-    if(!isset($_POST['email']) || !isset($_POST['password'])) {
+    if(isset($_POST['email']) || isset($_POST['password'])) {
+      if(empty($_POST['email']) || empty($_POST['password'])) {
+        throw new \MyApp\Exception\NotLogin();
+      }
+    } else {
       echo "メールアドレスもしくはパスワードが設定されていません";
       exit;
     }
-
-    if(empty($_POST['email']) || empty($_POST['password'])) {
-      throw new \MyApp\Exception\NotLogin();
-    }
+    
   }
 }
