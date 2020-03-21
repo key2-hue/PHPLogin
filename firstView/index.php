@@ -25,7 +25,7 @@ $index->begin();
     </form>
     <a href="/firstView/delete.php">アカウント削除画面に進む</a>
     <h1>ユーザー情報<span class="user">(id:<?= h($_SESSION['id']);?>)</span></h1>
-    <p>登録メールアドレス<?= h($index->myMail()['email']); ?></p>
+    <p><?= h($index->myMail()['name']); ?>さんようこそ</p>
   </div>
 </body>
 </html>

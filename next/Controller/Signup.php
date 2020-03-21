@@ -10,6 +10,8 @@ class Signup extends \MyApp\Controller {
 
   public $wrongEmail;
   public $wrongPassword;
+  public $wrongNickname;
+  public $signupUser;
 
   public function begin() {
     if($this->afterLogin()) {
@@ -30,23 +32,30 @@ class Signup extends \MyApp\Controller {
       $this->wrongEmail = "無効なメールアドレスです";
     } catch(\MyApp\Exception\InvalidPassword $e) {
       $this->wrongPassword = "無効なパスワードです";
-    }
+    } 
+
 
     $this->setNums('email', $_POST['email']);
+    $this->setNums('nickname', $_POST['nickname']);
 
     if($this->hasError()) {
       return;
     } else {
       try {
         $model = new \MyApp\Model\User();
-        $model->create([
+        $this->signupUser = $model->create([
           'email' => $_POST['email'],
-          'password' => $_POST['password']
+          'password' => $_POST['password'],
+          'nickname' => $_POST['nickname']
         ]);
       } catch(\MyApp\Exception\DuplicateEmail $e) {
         $this->setMistakes('email', $e->getMessage());
         return;
       }
+
+      
+      
+      
       header('Location: ' . TOP_URL . '/firstView/signup.php');
       exit;
     }
@@ -57,6 +66,10 @@ class Signup extends \MyApp\Controller {
     if(!isset($_POST['security']) || $_POST['security'] !== $_SESSION['security']) {
       echo "セキュリティーにミスがあります";
       exit;
+    }
+
+    if(!preg_match("/^[ぁ-んァ-ヶーa-zA-Z0-9一-龠０-９]+$/u", $_POST['nickname'])) {
+      $this->wrongNickname = "無効なニックネームです";
     }
 
     if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {

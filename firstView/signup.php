@@ -6,6 +6,8 @@ $signup = new MyApp\Controller\Signup();
 
 $signup->begin();
 
+// var_dump($_POST['nickname']);
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,10 +18,15 @@ $signup->begin();
 </head>
 <body>
   <div id="container">
+    <p><?= $signup->signupUser; ?></p>
     <form action="" method="post" id="Signup">
       <fieldset>
         <legend>登録するメールアドレス及びパスワードを入力してください</legend>
-        <div class="label">
+        <div class="labelSign">
+          <label>ニックネーム
+            <input type="text" name="nickname" value="">
+          </label>
+          <p class="err"><?= $signup->wrongNickname; ?></p>
           <label>メールアドレス
             <input type="text" name="email" value="<?= isset($signup->getNums()->email) ? h($signup->getNums()->email) : ''; ?>">
           </label>
