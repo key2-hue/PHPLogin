@@ -5,6 +5,8 @@ require_once(__DIR__ . '/../setting/setting.php');
 $login = new MyApp\Controller\Login();
 $login->begin();
 
+$_SESSION['name'] = '';
+
 ?>
 
 <!DOCTYPE html>

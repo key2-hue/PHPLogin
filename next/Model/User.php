@@ -15,12 +15,9 @@ class User extends \MyApp\Model {
       throw new \MyApp\Exception\DuplicateEmail();
     }
 
-    $signupInfo = $this->database->prepare("select * from loginUsers name = :name");
-    $info = $signupInfo->execute([
-      ':name' => $num['nickname']
-    ]);
+    
 
-    return $info;
+    $_SESSION['name'] = $num['nickname'] . 'さん登録完了しました!';
   }
 
   public function login($info) {

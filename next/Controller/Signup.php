@@ -43,7 +43,7 @@ class Signup extends \MyApp\Controller {
     } else {
       try {
         $model = new \MyApp\Model\User();
-        $this->signupUser = $model->create([
+        $model->create([
           'email' => $_POST['email'],
           'password' => $_POST['password'],
           'nickname' => $_POST['nickname']
@@ -52,8 +52,6 @@ class Signup extends \MyApp\Controller {
         $this->setMistakes('email', $e->getMessage());
         return;
       }
-
-      
       
       
       header('Location: ' . TOP_URL . '/firstView/signup.php');

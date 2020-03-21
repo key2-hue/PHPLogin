@@ -18,7 +18,7 @@ $signup->begin();
 </head>
 <body>
   <div id="container">
-    <p><?= $signup->signupUser; ?></p>
+    <p><?= isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?></p>
     <form action="" method="post" id="Signup">
       <fieldset>
         <legend>登録するメールアドレス及びパスワードを入力してください</legend>
